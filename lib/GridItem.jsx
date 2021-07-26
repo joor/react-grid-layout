@@ -14,7 +14,7 @@ import {
   clamp
 } from "./calculateUtils";
 import {
-  resizeHandlesType,
+  resizeHandleAxesType,
   resizeHandleType
 } from "./ReactGridLayoutPropTypes";
 import classNames from "classnames";
@@ -157,7 +157,7 @@ export default class GridItem extends React.Component<Props, State> {
     i: PropTypes.string.isRequired,
 
     // Resize handle options
-    resizeHandles: resizeHandlesType,
+    resizeHandles: resizeHandleAxesType,
     resizeHandle: resizeHandleType,
 
     // Functions
