@@ -7,6 +7,7 @@ import {
   bottom,
   childrenEqual,
   cloneLayoutItem,
+  cloneLayout,
   compact,
   compactType,
   fastRGLPropsEqual,
@@ -363,13 +364,17 @@ export default class ReactGridLayout extends React.Component<Props, State> {
       oldLayout: null
     });
 
-    this.onLayoutMaybeChanged(newLayout, oldLayout);
+    this.onLayoutMaybeChanged(newLayout, oldLayout, true);
   };
 
-  onLayoutMaybeChanged(newLayout: Layout, oldLayout: ?Layout) {
+  onLayoutMaybeChanged(
+    newLayout: Layout,
+    oldLayout: ?Layout,
+    forceCallback: ?boolean
+  ) {
     if (!oldLayout) oldLayout = this.state.layout;
 
-    if (!isEqual(oldLayout, newLayout)) {
+    if (!isEqual(oldLayout, newLayout) || forceCallback) {
       this.props.onLayoutChange(newLayout);
     }
   }
